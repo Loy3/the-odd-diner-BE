@@ -5,8 +5,8 @@ const stripe = require("stripe")(
 );
 
 router.post("/intents", async (req, res) => {
-    const amount = (parseFloat(req.body.amount) * 0.053)*100;
-    
+    const amount = req.body.amount;
+
     try {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amount,
